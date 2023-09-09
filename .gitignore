@@ -1,0 +1,5 @@
+/build
+*.nacp
+*.elf
+*.ovl
+.vscode
