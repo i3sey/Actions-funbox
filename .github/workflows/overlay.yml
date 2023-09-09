@@ -1,4 +1,4 @@
-name: Build AIO-switch-updater
+name: Build Uberhand
 
 on: 
   push:
