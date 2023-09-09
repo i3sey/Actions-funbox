@@ -1,38 +1,26 @@
-name: Build Uberhand
+name: "pre-release"
 
-on: 
+on:
   push:
   workflow_dispatch:
 
 jobs:
-  Uberhand:
-    runs-on: ubuntu-latest
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
     container: devkitpro/devkita64
     steps:
-    - uses: actions/checkout@v1
-      
-    - name: Building Uberhand
-      run: |
-        make
-        
-    - uses: actions/upload-artifact@master
-      with:
-        name: ovlmenu
-        path: ovlmenu.ovl
-    - name: Conventional Changelog Action
-      id: changelog
-      uses: TriPSs/conventional-changelog-action@v3
-      with:
-        github-token: ${{ secrets.github_token }}
-        output-file: "false"
+      # ...
+      - name: Building Uberhand
+        run: |
+          make
 
-    - name: Create Release
-      uses: actions/create-release@v1
-      if: ${{ steps.changelog.outputs.skipped == 'false' }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.github_token }}
-      with:
-        draft: true
-        tag_name: ${{ steps.changelog.outputs.tag }}
-        release_name: ${{ steps.changelog.outputs.tag }}
-        body: ${{ steps.changelog.outputs.clean_changelog }}
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          draft: true
+          title: "Uberhand"
+          files: |
+            ovlmenu.ovl
