@@ -10,15 +10,7 @@ jobs:
     container: devkitpro/devkita64
     steps:
     - uses: actions/checkout@v1
-
-    - name: install dependencies
-      run: |
-        apt install switch-jansson
-        apt install switch-curl
-        apt install switch-zziplib
-        apt install switch-mbedtls
-
-        
+      
     - name: Building Uberhand
       run: |
         make
