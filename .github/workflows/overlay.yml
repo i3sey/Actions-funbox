@@ -5,13 +5,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  pre-release:
+  Build Uberhand:
     name: "Pre Release"
     runs-on: "ubuntu-latest"
     container: devkitpro/devkita64
     steps:
       - uses: actions/checkout@v1
-      
+
       - name: Building Uberhand
         run: |
           make
