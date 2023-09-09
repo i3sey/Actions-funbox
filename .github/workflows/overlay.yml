@@ -1,7 +1,7 @@
 name: "Build Uberhand"
 
 on:
-  push:
+  push: main
   workflow_dispatch:
 
 jobs:
