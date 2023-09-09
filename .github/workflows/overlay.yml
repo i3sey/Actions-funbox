@@ -1,11 +1,11 @@
-name: "pre-release"
+name: "Build Uberhand"
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  Build Uberhand:
+  Build-Uberhand:
     name: "Pre Release"
     runs-on: "ubuntu-latest"
     container: devkitpro/devkita64
